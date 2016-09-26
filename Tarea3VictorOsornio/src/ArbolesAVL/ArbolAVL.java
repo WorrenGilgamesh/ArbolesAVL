@@ -174,6 +174,14 @@ public class ArbolAVL<T extends Comparable<T>>
         
         return 1 + Math.max(altura(n.izq), altura(n.der));
     }
+    
+    public int diametro(NodoAVL<T> n)
+    {
+       NodoAVL<T> a        =raiz.izq;
+       
+       altura(raiz);
+       return 0; 
+    }
 
     private void setBalance(NodoAVL<T>... nodes) 
     {
