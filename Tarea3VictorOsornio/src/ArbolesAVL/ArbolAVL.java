@@ -214,6 +214,8 @@ public class ArbolAVL<T extends Comparable<T>>
         arbol.Elimina(numElim);
         Imprenta.impNodo(arbol.raiz);
         System.out.print("Balance: ");
+        arbol.printBalance();
+        System.out.println("");
         System.out.println("El numero " + numElim + " ha sido eliminado");
     }
 }

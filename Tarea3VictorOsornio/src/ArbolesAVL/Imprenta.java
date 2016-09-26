@@ -21,9 +21,13 @@ public class Imprenta <T extends Comparable<T>>
     /**
      * Metodo de imprecion del nodo.Comienza checando que los nodos no se encuentren vacios y la lista tampoco. 
      * Si contiene algo crea:
-     *      int piso=nivel maximo menos la raiz
-     *      int lineasCerca=2^piso
-     *      int primerosEspacios=2^piso-1
+     *      int piso                =nivel maximo - raiz
+     *      int lineasCerca         =2^piso
+     *      int primerosEspacios    =(2^piso)-1
+     *      int espaciosEntre       =2^(piso+1)-1
+     * Se imprimen primeros espacios para centrar la cabeza.
+     * Se inicializa una lista para imprimir los nodos y agregarlos.
+     * imprime espacios blancos entre
      * @param <T>
      * @param nodo
      * @param nvl
@@ -53,9 +57,8 @@ public class Imprenta <T extends Comparable<T>>
             {
                 nuevosNodos.add(null);
                 nuevosNodos.add(null);
-                System.out.print(" ");
+                System.out.print("");
             }
-
             Imprenta.impEspaciosBlancos(espaciosEntre);
         }
         System.out.println("");
@@ -70,11 +73,11 @@ public class Imprenta <T extends Comparable<T>>
                     Imprenta.impEspaciosBlancos(lineasCerca + lineasCerca + i + 1);
                     continue;
                 }
-
                 if (nodo.get(j).izq != null)                
                     System.out.print("/");
                  else                 
                     Imprenta.impEspaciosBlancos(1);
+                //(nodo.get(j).izq != null)?(System.out.print("/")):(Imprenta.impEspaciosBlancos(1));
                 
                 Imprenta.impEspaciosBlancos(i + i - 1);
 
@@ -87,7 +90,7 @@ public class Imprenta <T extends Comparable<T>>
             }
             System.out.println("");
         }
-        impNodoInterno(nuevosNodos, nvl + 1, maxNvl);
+        impNodoInterno(nuevosNodos, nvl+1, maxNvl);
     }
 
     public static void impEspaciosBlancos(int cont) 
