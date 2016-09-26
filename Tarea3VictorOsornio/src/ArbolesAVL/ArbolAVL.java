@@ -7,6 +7,12 @@ public class ArbolAVL<T extends Comparable<T>>
 {
     private NodoAVL<T>          raiz;
 
+    /**
+     * Metodo de insercion de datos Comparables. Comienza checando que tenga raiz, si no, le crea una raiz. 
+     * Si ya tiene raiz; raiz se pasa a n, busca que el dato no se encuentre ya, papa=n 
+     * @param dato Comparable
+     * @return boolean
+     */
     public boolean insertar(T d) 
     {
         if (raiz == null)        
@@ -15,18 +21,18 @@ public class ArbolAVL<T extends Comparable<T>>
         {
             NodoAVL<T> n       =raiz;
             NodoAVL<T> papa;
-            while (true) 
+            while (true) //debido a la flojera de construir un iterador se usa un while que se rompe por la mala !no hacer esto == malas practicas!
             {
                 if (n.dato.equals(d))               
                     return false;
                 
                 papa            = n;
-                boolean vaIzq   = n.dato.compareTo(d) > 0;
-                n               = vaIzq ? n.izq : n.der;
+                boolean direc   = n.dato.compareTo(d) > 0;
+                n               = direc ? n.izq : n.der;
 
                 if (n == null) 
                 {
-                    if (vaIzq)                   
+                    if (direc)                   
                         papa.izq = new NodoAVL(d, papa);
                     else                   
                         papa.der = new NodoAVL(d, papa);
