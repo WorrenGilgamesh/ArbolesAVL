@@ -20,6 +20,10 @@ public class Imprenta <T extends Comparable<T>>
 
     /**
      * Metodo de imprecion del nodo.Comienza checando que los nodos no se encuentren vacios y la lista tampoco. 
+     * Si contiene algo crea:
+     *      int piso=nivel maximo menos la raiz
+     *      int lineasCerca=2^piso
+     *      int primerosEspacios=2^piso-1
      * @param <T>
      * @param nodo
      * @param nvl
@@ -31,7 +35,7 @@ public class Imprenta <T extends Comparable<T>>
             return;        
 
         int piso                            = maxNvl - nvl;
-        int lineasCerca                     = (int) Math.pow(2, (Math.max(piso - 1, 0)));
+        int lineasCerca                     = (int) Math.pow(2, piso-1);
         int primerosEspacios                = (int) Math.pow(2, (piso)) - 1;
         int espaciosEntre                   = (int) Math.pow(2, (piso + 1)) - 1;
 
@@ -93,7 +97,7 @@ public class Imprenta <T extends Comparable<T>>
     }
     
 /**
- * Metodo maximo nivel que regresa el numero de niveles. De manera recursiva cuenta los nodos del lado izquierdo y del lado derecho + la raiz
+ * Metodo maximo nivel que regresa el numero de niveles. De manera recursiva cuenta los nodos del lado izquierdo y del lado derecho y decide el mayor de los dos + la raiz
  * 
  * @param <T>
  * @param nodo
