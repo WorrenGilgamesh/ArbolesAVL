@@ -6,13 +6,25 @@ import java.util.List;
 
 public class Imprenta <T extends Comparable<T>> 
 {
-
+/**
+ * El singletonList==Returns an immutable list containing only the specified object.
+ * The returned list is serializable.
+ * @param <T>
+ * @param raiz 
+ */
     public static <T extends Comparable<T>> void impNodo(NodoAVL<T> raiz) 
     {
         int maxNvl = Imprenta.maxNvl(raiz);
         impNodoInterno(Collections.singletonList(raiz), 1, maxNvl);
     }
 
+    /**
+     * Metodo de imprecion del nodo.Comienza checando que los nodos no se encuentren vacios y la lista tampoco. 
+     * @param <T>
+     * @param nodo
+     * @param nvl
+     * @param maxNvl 
+     */
     public static <T extends Comparable<T>> void impNodoInterno(List<NodoAVL<T>> nodo, int nvl, int maxNvl) 
     {
         if (nodo.isEmpty() || Imprenta.TodosElemNull(nodo)) 
@@ -77,10 +89,16 @@ public class Imprenta <T extends Comparable<T>>
     public static void impEspaciosBlancos(int cont) 
     {
         for (int i = 0; i < cont; i++) 
-            System.out.print(" ");
-        
+            System.out.print(" ");        
     }
-
+    
+/**
+ * Metodo maximo nivel que regresa el numero de niveles. De manera recursiva cuenta los nodos del lado izquierdo y del lado derecho + la raiz
+ * 
+ * @param <T>
+ * @param nodo
+ * @return int
+ */
     public static <T extends Comparable<T>> int maxNvl(NodoAVL<T> nodo)
     {
         if (nodo == null) 
@@ -88,6 +106,12 @@ public class Imprenta <T extends Comparable<T>>
         return Math.max(Imprenta.maxNvl(nodo.izq), Imprenta.maxNvl(nodo.der)) + 1;
     }
 
+    /**
+     * Metodo que busca si la lista esta vacia o no. 
+     * @param <T>
+     * @param list
+     * @return Boolean
+     */
     public static <T> boolean TodosElemNull(List<T> list)
     {
         for (Object object : list)
