@@ -27,7 +27,10 @@ public class Imprenta <T extends Comparable<T>>
      *      int espaciosEntre       =2^(piso+1)-1
      * Se imprimen primeros espacios para centrar la cabeza.
      * Se inicializa una lista para imprimir los nodos y agregarlos.
-     * imprime espacios blancos entre
+     * imprime espacios blancos entre.
+     * salto de linea
+     * ciclos de imprecion de espacios para acomodar ramas
+     * al final se hace recursivo para volver a empezar en el siguiente nvl
      * @param <T>
      * @param nodo
      * @param nvl
@@ -55,8 +58,6 @@ public class Imprenta <T extends Comparable<T>>
                 nuevosNodos.add(node.der);
             } else 
             {
-                nuevosNodos.add(null);
-                nuevosNodos.add(null);
                 System.out.print("");
             }
             Imprenta.impEspaciosBlancos(espaciosEntre);
@@ -68,16 +69,12 @@ public class Imprenta <T extends Comparable<T>>
             for (int j = 0; j < nodo.size(); j++) 
             {
                 Imprenta.impEspaciosBlancos(primerosEspacios - i);
-                if (nodo.get(j) == null) 
-                {
-                    Imprenta.impEspaciosBlancos(lineasCerca + lineasCerca + i + 1);
-                    continue;
-                }
+                
                 if (nodo.get(j).izq != null)                
                     System.out.print("/");
                  else                 
                     Imprenta.impEspaciosBlancos(1);
-                //(nodo.get(j).izq != null)?(System.out.print("/")):(Imprenta.impEspaciosBlancos(1));
+                //(nodo.get(j).izq != null)?(System.out.print("/")):(Imprenta.impEspaciosBlancos(1)); por alguna razon no se puede
                 
                 Imprenta.impEspaciosBlancos(i + i - 1);
 
