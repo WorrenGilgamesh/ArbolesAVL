@@ -49,15 +49,17 @@ public class Imprenta <T extends Comparable<T>>
         Imprenta.impEspaciosBlancos(primerosEspacios);
 
         List<NodoAVL<T>> nuevosNodos        = new ArrayList<NodoAVL<T>>();
-        for (NodoAVL<T> node : nodo) 
+        for (NodoAVL<T> nodoFor : nodo) 
         {
-            if (node != null) 
+            if (nodoFor != null) 
             {
-                System.out.print(node.dato);
-                nuevosNodos.add(node.izq);
-                nuevosNodos.add(node.der);
+                System.out.print(nodoFor.dato);
+                nuevosNodos.add(nodoFor.izq);
+                nuevosNodos.add(nodoFor.der);
             } else 
             {
+                nuevosNodos.add(null);
+                nuevosNodos.add(null);
                 System.out.print("");
             }
             Imprenta.impEspaciosBlancos(espaciosEntre);
@@ -70,6 +72,11 @@ public class Imprenta <T extends Comparable<T>>
             {
                 Imprenta.impEspaciosBlancos(primerosEspacios - i);
                 
+                if (nodo.get(j) == null) 
+                {
+                   Imprenta.impEspaciosBlancos(lineasCerca + lineasCerca + i + 1);
+                   continue;
+                }                
                 if (nodo.get(j).izq != null)                
                     System.out.print("/");
                  else                 

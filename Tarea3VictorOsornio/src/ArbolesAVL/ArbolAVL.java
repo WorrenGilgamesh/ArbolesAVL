@@ -51,6 +51,11 @@ public class ArbolAVL<T extends Comparable<T>>
         return res;
     }
 
+/**
+ *  c
+ * omenzamos 
+ * @param dElim 
+ */
     public void Elimina(T dElim) 
     {
         if (raiz == null)       
@@ -70,7 +75,6 @@ public class ArbolAVL<T extends Comparable<T>>
             if (dElim == n.dato)           
                 nodoElim        = n;            
         }
-
         if (nodoElim != null) 
         {
             nodoElim.dato       = n.dato;
@@ -279,8 +283,10 @@ public class ArbolAVL<T extends Comparable<T>>
             arbol.insertar(75);
             arbol.insertar(60);
             Imprenta.impNodo(arbol.raiz);
+            System.out.println("-------------------------------");
             arbol.Elimina(100);
             Imprenta.impNodo(arbol.raiz);
+            System.out.println("-------------------------------");
             arbol.insertar(40);
             arbol.insertar(56);
             arbol.insertar(80);
@@ -291,11 +297,12 @@ public class ArbolAVL<T extends Comparable<T>>
             arbol.insertar(30);
             arbol.insertar(35);
             Imprenta.impNodo(arbol.raiz);
+            System.out.println("-------------------------------");
             arbol.Elimina(80);
             arbol.Elimina(60);
             arbol.Elimina(30);
             arbol.Elimina(35);
-            arbol.Elimina(45);
+            arbol.Elimina(40);
             Imprenta.impNodo(arbol.raiz);
     }
 }
